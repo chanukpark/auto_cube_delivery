@@ -31,9 +31,9 @@ git clone https://github.com/yejunjoo/auto_cube_delivery.git
 
 * ROS2 build
 ```bash
-cd ~/ros2_ws
+cd ~/{ros2_workspace}
 colcon build --symlink-install --packages-select auto_cube_delivery
-source install/setup.bash
+source install/setup.zsh
 ```
 
 
@@ -46,12 +46,13 @@ ros2 launch auto_cube_delivery navigation.launch.py map:=map_01
 
 * (Terminal 2)
 ```bash
+source ~/{ros2_workspace}/install/setup.zsh
 ros2 launch auto_cube_delivery rviz_navigation.launch.py
 ```
 
 * (Terminal 3)
 ```bash
-source ~/ros2_ws/install/setup.bash
+source ~/{ros2_workspace}/install/setup.zsh
 ros2 run auto_cube_delivery auto_cube_delivery
 (ros2 run [package name] [command name])
 ```
