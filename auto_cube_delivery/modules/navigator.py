@@ -13,6 +13,12 @@ class Navigator:
 
         self.navigator = BasicNavigator()
 
+        # ADD !!
+        # save starting point -> convert to map world frame coordinate
+        # relocalizaiton..
+        # if relocalization fail -> assert!
+        # range of movement
+
 
         # [중요 1] 초기 위치 설정 (이게 없으면 Nav2가 멍하니 기다릴 수 있음)
         # 실제 로봇/시뮬레이션의 시작 위치와 맞춰야 합니다.
@@ -30,9 +36,14 @@ class Navigator:
         self.navigator.waitUntilNav2Active()
         print("Done connecting Nav2. Ready to move.")
 
-    def set_goal(self, x, y, yaw, mode='degrees'):
-        goal_pose = PoseStamped()
 
+
+    def set_goal(self, coordinate, mode='degrees'):
+        x = coordinate[0]
+        y = coordinate[1]
+        yaw = coordinate[2]
+
+        goal_pose = PoseStamped()
         goal_pose.header.frame_id = 'map'   # world frame coordinate
         goal_pose.header.stamp = self.navigator.get_clock().now().to_msg()
 
