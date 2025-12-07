@@ -7,12 +7,12 @@ class Database:
         self.task_seq = None
 
         # zone1 - left - id7
-        self.zone_info = {'zone1':
-                              {'dir': None, 'id': None},
-                          'zone2':
-                              {'dir': None, 'id': None},
-                          'zone3':
-                              {'dir': None, 'id': None}}
+        self.zone_info = {'left':
+                              {'num': None, 'id': None},
+                          'middle':
+                              {'num': None, 'id': None},
+                          'right':
+                              {'num': None, 'id': None}}
 
         # red - left
         self.cube_info = {'red':None,
@@ -30,14 +30,16 @@ class Database:
         assert len(seq_list) > 0, "Too Short Task Sequence"
         self.task_seq = seq_list
 
-    def fill_zone_dir(self, zone_name, dir):
-        assert zone_name in ['zone1', 'zone2', 'zone3'], "Wrong Name for Zone"
+    def fill_zone_num(self, dir, zone_num):
         assert dir in ['left', 'middle', 'right'], "Wrong Direction for Zone"
-        self.zone_info[zone_name]['dir'] = dir
+        assert zone_num in [1, 2, 3], "Wrong Number for Zone"
+        self.zone_info[dir]['num'] = zone_num
 
-    def fill_zone_id(self, zone_name, id):
-        assert zone_name in ['zone1', 'zone2', 'zone3'], "Wrong Name for Zone"
-        self.zone_info[zone_name]['id'] = id
+    def fill_zone_id(self, dir, zone_id):
+        assert dir in ['left', 'middle', 'right'], "Wrong Direction for Zone"
+        assert False, "Fill Marker ID candidates"
+        assert zone_id in [1, 6, 7], "Wrong Marker ID for Zone"
+        self.zone_info[dir]['id'] = zone_id
 
     def fill_cube_info(self, color, direction):
         assert direction in ['left', 'middle', 'right'], "Wrong Direction for Cube"
