@@ -139,9 +139,21 @@ class Navigator():
             return False
 
     def _spin_and_check(self):
-        self.navigator.spin(spin_dist=3.14*2, time_allowance=10)
+        self.navigator.spin(spin_dist=3.14*2, time_allowance=30)
         while not self.navigator.isTaskComplete():
             time.sleep(0.5)
+
+        # check if spinning 360 is done well
+        result = self.navigator.getResult()
+        if result == TaskResult.SUCCEEDED:
+            print("Done Spinning 360.")
+        elif result == TaskResult.CANCELED:
+            print("Spinning Cancelled.")
+            assert False
+        elif result == TaskResult.FAILED:
+            print("Failed to Spin. Obstacle or Timelimit.")
+            assert False
+
         if self._check_converge():
             print("Done Localization after spinning")
             return True
@@ -212,7 +224,8 @@ class Navigator():
             print(f"[TF Error] Failed to bring Transformation matrix: {e}")
 
     def move_to_start(self):
-        self.set_goal(self.start_point, mode='degrees', frame='odom')
+        # todo: [0,0,0] or self.start_point
+        self.set_goal([0.0, 0.0, 0.0], mode='degrees', frame='odom')
 
     def set_goal(self, coordinate, mode='degrees', frame='map'):
         x = coordinate[0]

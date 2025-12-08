@@ -40,7 +40,7 @@ source install/setup.zsh
 * (Terminal 1)
 ```bash
 sudo systemctl stop start_app_node.service
-ros2 launch auto_cube_delivery navigation.launch.py map:=map_01
+ros2 launch auto_cube_delivery navigation.launch.py map:="map_01"
 (change to your map name)
 ```
 

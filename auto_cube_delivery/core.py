@@ -11,9 +11,9 @@ def core_process():
     # ---- Hyper Parameters ----------------- #
     # map frame
     # x, y, yaw
-    landmark = [(0.0, 0.0, 0.0),    # left
-                (0.0, 0.0, 0.0),    # middle
-                (0.0, 0.0, 0.0)]    # right
+    landmark = [(1.0, 0.0, 0.0),    # left
+                (2.0, 0.0, 0.0),    # middle
+                (3.0, 0.0, 0.0)]    # right
 
     # movable range for initial localization
     cov_threshold = 0.05
